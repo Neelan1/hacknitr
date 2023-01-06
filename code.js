@@ -1,3 +1,5 @@
+
+let container = document.getElementsByClassName("container-1");
 const currentDate = new Date();
 const predictedDate = new Date();
 predictedDate.setDate(predictedDate.getDate() + 75);
@@ -103,35 +105,65 @@ fetchLongLat().then( // runs the api fetch and gets the info
 
 function putSnowStorm(time){
     const img = document.createElement("img");
+    img.setAttribute('id',"thunderstorm" + val);
     img.src = "snow storm.jpg";
-    document.body.appendChild(img);
+    container = document.getElementsByClassName("container-1");
+    document.container.appendChild(img);
     document.write("<br /> SnowStorm On " + time);
+    document.appendChild()
 }
 
-function putThunderStorm(){
+function putThunderStorm(time){
     const img = document.createElement("img");
+    img.setAttribute('id',"thunderstorm" + val);
     img.src = "Thunderstorm.webp";
-    document.body.appendChild(img);
+    container = document.getElementsByClassName("container-1");
+    document.container.appendChild(img);
     document.write("<br /> Thunderstorm On " + time);
+    val += 1;
 }
-function putFlood(){
+function putFlood(time){
     const img = document.createElement("img");
     img.src = "Flood.webp";
-    document.body.appendChild(img);
+    container = document.getElementsByClassName("container-1");
+    document.container.appendChild(img);
     document.write("<br /> Flood On " + time);
 }
-function putHeatWave(){
+function putHeatWave(time){
     const img = document.createElement("img");
     img.src = "Heatwave.jpg";
-    document.body.appendChild(img);
+    container = document.getElementsByClassName("container-1");
+    document.container.appendChild(img);
     document.write("<br /> Heatwave On " + time);
 }
-function putTornado(){
-    const img = document.createElement("img");
-    img.src = "Tornado.jpg";
-    document.body.appendChild(img);
-    document.write("<br /> Tornado On " + time);
-}
+function putTornado(time){
+    // let img = document.createElement("IMG");
+    // img.src = "Tornado.jpg";
+    // document.body.appendChild(img);
+    // document.write("<br /> Tornado On " + time);
+  
+    let x = document.createElement("IMG");
+    x.setAttribute("src", "Tornado.jpg");
+    x.setAttribute("width", "304");
+    x.setAttribute("height", "228");
+    document.body.appendChild(x);
+   
+    const para = document.createElement("p");
+    para.innerHTML = "Tornado On " + time;
+    document.body.append(para);
+  }
+  
+
+  function printResults(){
+    for(let i = 0; i < events.length; i++){
+        
+    }
+  }
+
+  
+
+
+
 
 
 
