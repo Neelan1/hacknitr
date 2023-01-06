@@ -1,13 +1,9 @@
-//For next couple days
-let location = "";
-let time = 0;
-// An array for all the events upcoming in the area
-let events = {
 
-}
-// An array for the time of when the events are going to occour
-let timeOfEvents = {
+const options = { // to use api
 
+    headers: {
+        "Authorization": "Bearer 6UZNWzxjB0MV_4xdAmqHHqY9ygw_ZdynrqzKh39J"
+    }
 }
 function getInfo()
 {
@@ -20,7 +16,8 @@ function getInfo()
 }
 function getLocation(location) // gets location codes
 {
-  //returns location code
+
+  
 }
 
 
@@ -30,7 +27,7 @@ async function fetchQuote() // async means it happens with
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
     
-    const response = await fetch('https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather' + place + date, options);
+    const response = await fetch('https://api.predicthq.com/v1/events/?location_around.origin=40.730610,-73.935242&category=disasters,terror,severe-weather' , options);
     if (response.ok)  { // checks if response works
         console.log("SUCCESS");
         return await response.json(); // returns it
@@ -40,13 +37,23 @@ async function fetchQuote() // async means it happens with
 
     }
 }
+//For next couple days
+let place = "";
+let time = 0;
+// An array for all the events upcoming in the area
+let events = {
 
+}
+// An array for the time of when the events are going to occour
+let timeOfEvents = {
+
+}
 
 fetchQuote().then( // runs the api fetch and gets the info
 
     // after its done loading it does all the stuff in the brackets
     response => {   
-        console.log(response);
+
         events = response.results
         console.log(events);
     }
