@@ -17,12 +17,27 @@ function getInfo()
 function getLocation(location) // gets location codes
 {
 
+
   
 }
+async function fetchLongLat() // async means it happens with
+{
+    // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
+    // it searches terror disasters, and severe weather everywhere all time 
+    
+    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q=London,CA&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0');
+    if (response.ok)  { // checks if response works
+        console.log("SUCCESS");
+        return await response.json(); // returns it
+    }
+    else {
+        console.log("FAIL"); // says if it fails
 
+    }
+}
 
 //returns an object which holds the results
-async function fetchQuote() // async means it happens with
+async function fetchQuote(place, time) // async means it happens with
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
@@ -48,18 +63,28 @@ let events = {
 let timeOfEvents = {
 
 }
-
-fetchQuote().then( // runs the api fetch and gets the info
+fetchLongLat().then( // runs the api fetch and gets the info
 
     // after its done loading it does all the stuff in the brackets
     response => {   
+        console.log(response);
+        // fetchQuote(response).then( // runs the api fetch and gets the info
 
-        events = response.results
-        console.log(events);
+        //     // after its done loading it does all the stuff in the brackets
+        //     response => {   
+        
+        //         events = response.results
+        //         console.log(events);
+        //     }
+        // );
     }
 
 
 );
+
+
+
+
 
 function putSnowStorm(time){
     const img = document.createElement("img");
