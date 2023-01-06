@@ -6,13 +6,13 @@ const options = {
 }
 function getLocation(location)
 {
-    
+
 }
 
 
 async function fetchQuote()
 {
-    const response = await fetch('https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather&?', options);
+    const response = await fetch('https://api.predicthq.com/v1/events/?category=terror', options);
     if (response.ok)  {
         console.log("SUCCESS");
         return await response.json();
