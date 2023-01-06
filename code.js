@@ -1,4 +1,7 @@
-
+const currentDate = new Date();
+const predictedDate = new Date();
+predictedDate.setDate(predictedDate.getDate() + 75);
+console.log(`${predictedDate.getDate()}-${predictedDate.getMonth() + 1}-${predictedDate.getFullYear()}`)
 const options = { // to use api
 
     headers: {
@@ -25,7 +28,7 @@ async function fetchLongLat() // async means it happens with
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
     
-    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q=London,CA&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0');
+    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tokyo,JP&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0');
     if (response.ok)  { // checks if response works
         console.log("SUCCESS");
         return await response.json(); // returns it
@@ -37,12 +40,24 @@ async function fetchLongLat() // async means it happens with
 }
 
 //returns an object which holds the results
-async function fetchQuote(place, time) // async means it happens with
+async function fetchQuote(place) // async means it happens with
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
     
-    const response = await fetch('https://api.predicthq.com/v1/events/?location_around.origin=40.730610,-73.935242&category=disasters,terror,severe-weather' , options);
+    const response = await fetch(
+        'https://api.predicthq.com/v1/events/?limit=25&location_around.origin=' 
+        + place[0] + ',' + place[1] 
+        + '&category=disasters,terror,severe-weather&end.lte=' 
+        + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
+        + '&end.gte='
+        + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+        + '&start.lte='
+        + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
+        + '&start.gte='
+        + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+        + '&within=300km@'+ place[0] + ',' + place[1] 
+        , options);
     if (response.ok)  { // checks if response works
         console.log("SUCCESS");
         return await response.json(); // returns it
@@ -66,17 +81,18 @@ let timeOfEvents = {
 fetchLongLat().then( // runs the api fetch and gets the info
 
     // after its done loading it does all the stuff in the brackets
-    response => {   
-        console.log(response);
-        // fetchQuote(response).then( // runs the api fetch and gets the info
+    response => {  
 
-        //     // after its done loading it does all the stuff in the brackets
-        //     response => {   
-        
-        //         events = response.results
-        //         console.log(events);
-        //     }
-        // );
+        const longlat = [response[0].lat, response[0].lon];
+        console.log(longlat);
+        fetchQuote(longlat).then( // runs the api fetch and gets the info
+
+            // after its done loading it does all the stuff in the brackets
+            response => {   
+                events = response.results
+                console.log(response);
+            }
+        );
     }
 
 
