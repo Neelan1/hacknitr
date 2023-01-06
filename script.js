@@ -7,7 +7,6 @@ const options = { // to use api
 function getLocation(location) // gets location codes
 {
 
-
 }
 
 

@@ -61,6 +61,39 @@ fetchQuote().then( // runs the api fetch and gets the info
 
 );
 
+function putSnowStorm(time){
+    const img = document.createElement("img");
+    img.src = "snow storm.jpg";
+    document.body.appendChild(img);
+    document.write("<br /> SnowStorm On " + time);
+}
+
+function putThunderStorm(){
+    const img = document.createElement("img");
+    img.src = "Thunderstorm.webp";
+    document.body.appendChild(img);
+    document.write("<br /> Thunderstorm On " + time);
+}
+function putFlood(){
+    const img = document.createElement("img");
+    img.src = "Flood.webp";
+    document.body.appendChild(img);
+    document.write("<br /> Flood On " + time);
+}
+function putHeatWave(){
+    const img = document.createElement("img");
+    img.src = "Heatwave.jpg";
+    document.body.appendChild(img);
+    document.write("<br /> Heatwave On " + time);
+}
+function putTornado(){
+    const img = document.createElement("img");
+    img.src = "Tornado.jpg";
+    document.body.appendChild(img);
+    document.write("<br /> Tornado On " + time);
+}
+
+
 
 
 
