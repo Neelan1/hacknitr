@@ -46,12 +46,9 @@ async function fetchQuote(place) // async means it happens with
     // it searches terror disasters, and severe weather everywhere all time 
     
     const response = await fetch(
-        'https://api.predicthq.com/v1/events/?limit=100&location_around.origin=' 
+        'https://api.predicthq.com/v1/events/?limit=100&location_around.origin='    
         + place[0] + ',' + place[1] 
-        + '&category=disasters,terror,severe-weather&end.lte=' 
-        + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
-        + '&end.gte='
-        + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+        + '&category=disasters,terror,severe-weather' 
         + '&start.lte='
         + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
         + '&start.gte='
@@ -90,7 +87,8 @@ fetchLongLat().then( // runs the api fetch and gets the info
             // after its done loading it does all the stuff in the brackets
             response => {   
                 events = response.results
-                console.log(events);
+                localStorage.setItem('events', JSON.stringify(events));
+
 
             }
         );
