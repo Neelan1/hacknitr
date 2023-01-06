@@ -16,10 +16,7 @@ body {
 
 .navigationbar ul {
   display: flex;
-}
-
-.navigationbar li {
-  margin-right: auto;
+  list-style: none;
 }
 
 .navigationbar li:hover {
@@ -105,8 +102,8 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-div {
+#questions {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
-}
+}  
