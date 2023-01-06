@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.topbar {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    background-color: rgb(51, 47, 47)
+}
+
+.navigationbar ul {
+    display: flex;
+}
+
+.navigationbar li {
+    margin-right: auto;
+}
+
+.navigationbar li:hover {
+    background-color: #555;
+}
+
+.navigationbar li a {
+    text-decoration: none;
+    color: white;
+    padding: 16px;
+    display: block;
+
+}
+
