@@ -153,6 +153,13 @@ function putTornado(time){
     para.innerHTML = "Tornado On " + time;
     document.body.append(para);
   }
+  
+
+  function printResults(){
+    for(let i = 0; i < events.length; i++){
+        
+    }
+  }
 
   
 
