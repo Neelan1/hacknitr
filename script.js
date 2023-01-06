@@ -8,7 +8,7 @@ function getLocation(location) // gets location codes
 {
 
 
-}w
+}
 
 
 async function fetchQuote() // async means it happens with
