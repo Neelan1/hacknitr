@@ -23,7 +23,7 @@ function getWeather(days){
 let month = 0;
 let year = 0;
 function getCalender(){
-    let id = (i % 7) + 1
+    let id = "bigbox" 
     let objToday = getWeather(0);
     let weekDay = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
     let months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
