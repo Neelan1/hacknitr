@@ -94,6 +94,7 @@ function putSnowStorm(id){
     x.setAttribute("src", "img-snow storm.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
+    x.setAttribute()
     document.getElementById(id).appendChild(x);
 
 }
@@ -110,6 +111,7 @@ function putFlood(id){
     x.setAttribute("src", "img-flood.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
+    x.setAttribute("onclick", function(){window.location.href= "info-earthquake/html"};)
     document.getElementById(id).appendChild(x);   
 }
 function putHeatWave(id){
@@ -124,6 +126,7 @@ function putEarthquake(id){
     x.setAttribute("src", "img-earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
+    // x.setAttribute("onclick", function(){window.location.href= "info-earthquake/html"};)
     document.getElementById(id).appendChild(x);
 }
 function putRain(id){
