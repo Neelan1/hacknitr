@@ -1,42 +1,3 @@
-async function fetchWeather(place) // async means it happens with 
-{
-    // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
-    // it searches terror disasters, and severe weather everywhere all time 
-
-
-
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76fd3f0ca85045e899633353230601&q=${place[0]},${place[1]}&days=7&aqi=no&alerts=no`);
-    if (response.ok)  { // checks if response works
-        
-        return await response.json(); // returns it
-    }
-    else {
-        console.log("FAIL"); // says if it fails
-
-    }
-}
-async function fetchLongLat(country, city) // async means it happens with 
-{
-    // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
-    // it searches terror disasters, and severe weather everywhere all time 
-
-    console.log(country)
-    console.log(city)
-
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0`);
-    if (response.ok)  { // checks if response works
-        
-        return await response.json(); // returns it
-    }
-    else {
-        console.log("FAIL"); // says if it fails
-
-    }
-}
-
-
-
-//returns an object which holds the results
 async function fetchQuote(place) // async means it happens with
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
@@ -73,57 +34,6 @@ async function fetchQuote(place) // async means it happens with
 
     }
 }
-
-if(!(document.location.href.includes("disaster.html"))){
-    const form = document.querySelector('.form');
-    form.addEventListener('submit', (e) =>
-    {
-        e.preventDefault();
-        const country = document.getElementById('country').value; //put the id of the input for location
-        const city = document.getElementById('city').value; 
-        if(!(country == null || country == ""))
-        {
-            fetchLongLat(country, city).then( // runs the api fetch and gets the info
-
-                // after its done loading it does all the stuff in the brackets
-                response => {  
-                    
-
-                    const longlat = [response[0].lat, response[0].lon];
-                    console.log(longlat)
-                    localStorage.setItem('longlat', JSON.stringify(longlat));
-                    
-                    fetchWeather(longlat).then( // runs the api fetch and gets the info
-
-                        // after its done loading it does all the stuff in the brackets
-                        (response) => {   
-                            events = response
-                            console.log(events);
-                            window.localStorage.setItem('events', JSON.stringify(events));
-                            
-
-
-                        }
-                    );
-                }
-
-
-            )
-
-        }
-        else{
-            alert("Invalid Country")
-
-        }
-  
-    })
-}
-else 
-{
-    printResults();
-   
-}
-
 function putSnowStorm(id){
     let x = document.createElement("IMG");
     x.addEventListener("click", function(){window.location.href = "info-snowstorm.html"}); 
@@ -248,83 +158,7 @@ function printResults(){
         para.setAttribute('class', 'disaster_text')
         para.innerHTML = '<b>' + events[i].title + '</b>' +" on "  + `${dateStart.getFullYear()}-${dateStart.getMonth() + 1}-${dateStart.getDate() + 1} `+ dateStart.toUTCString().slice(-12) + ' to ' + `${dateEnd.getFullYear()}-${dateEnd.getMonth() + 1}-${dateEnd.getDate() + 1} ` + dateEnd.toUTCString().slice(-12);
         document.getElementById(id).append(para);
-
+        
     }
   }
-function getWeather(days){
-    let objToday = new Date()
-    currentDate.setDate(objToday.getDate() + days)
-}
-
-function getCalender();{
-    let objDay = getWeather(0);
-    let weekDay = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-    let months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-    let weekDayList = [
-
-    ]
-    let dayList = [
-
-    ]
-    //Code for the first day to get the month and year along with the day and day of the week to append
-    objDay = getWeather(i);
-    let curDay = objToday.getDay();
-    let dayOfWeek = weekday[objToday.getDay()]
-    weekDayList.push(dayOfWeek);
-    dayList.push(curDay);
-    let curMonth = months[objToday.getMonth()];
-    let curYear = objToday.getFullYear();
-    //Loops through the other 6 days 
-    for(let i = 1; i < 7; i++){
-        objDay = getWeather(i);
-        let curDay = objToday.getDay();
-        let dayOfWeek = weekday[objToday.getDay()]
-        
-        weekDayList.push(dayOfWeek);
-        dayList.push(curDay);
-    }
-    //Turns the year and month into html elements
-    let visualMonth = document.createElement("li");
-    visualMonth.setAttribute('class', 'month');
-    visualMonth.innerHTML(curMonth);
-    
-    let visualYear = document.createElement("li");
-    visualMonth.setAttribute('class', 'year');
-    visualMonth.innerHTML(curYear);
-
-    for(let j = 0; i < weekDayList.length; i++){
-        let visualWeekDay = document.createElement("li");
-        visualMonth.setAttribute('class', 'weekDay');
-        visualMonth.innerHTML(weekDay);
-        document.getElementById(id).appendChild(visualWeekDay)
-    }
-    for(let k = 0; i < dayList.length; i++){
-        let visualDay= document.createElement("li");
-        visualMonth.setAttribute('class', 'day');
-        visualMonth.innerHTML(curDay);
-        document.getElementById(id).appendChild(visualDay);  
-    }
-}
-
-
-
-
-
-
-
-
-//Have the website redirect the user to the different disaster events happening all in one webpage
-//Have a button for the user to click to redirect to more specific info of the disaster along with date of when it's happening along with ways to deal with the disaster
-
-
-
-
-
-
-
-
-
-
-
-//On a specific day (0-90 days)
 
