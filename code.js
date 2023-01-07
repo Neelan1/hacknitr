@@ -1,5 +1,7 @@
 
 let container = document.getElementsByClassName("container-1");
+const form = document.querySelector('.form__group');
+console.log(form);
 const currentDate = new Date();
 const predictedDate = new Date();
 predictedDate.setDate(predictedDate.getDate() + 75);
@@ -152,6 +154,7 @@ function putTornado(time){
     para.innerHTML = "Tornado On " + time;
     document.body.append(para);
   }
+  
   
 
   function printResults(){
