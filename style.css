@@ -223,3 +223,8 @@ header {
   outline: 0;
   cursor: pointer;
 }
+
+#results{
+  display: flex;
+  flex-direction: row;
+}

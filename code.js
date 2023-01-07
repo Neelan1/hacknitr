@@ -15,7 +15,7 @@ const options = { // to use api
 function getInfo()
 {
 
-
+    
     
     //Input info into the api
     //Jave the api spit the info into the arrays
@@ -64,8 +64,6 @@ async function fetchQuote(place) // async means it happens with
 
     }
 }
-
-
 const form = document.querySelector('.form');
 form.addEventListener('submit', (e) =>
 {
@@ -74,23 +72,23 @@ form.addEventListener('submit', (e) =>
     const city = document.getElementById('city').value; 
     fetchLongLat(country, city).then( // runs the api fetch and gets the info
 
-        // after its done loading it does all the stuff in the brackets
-        response => {  
+    // after its done loading it does all the stuff in the brackets
+    response => {  
 
-            const longlat = [response[0].lat, response[0].lon];
-            console.log(longlat);
-            fetchQuote(longlat).then( // runs the api fetch and gets the info
+        const longlat = [response[0].lat, response[0].lon];
+        console.log(longlat);
+        fetchQuote(longlat).then( // runs the api fetch and gets the info
 
-                // after its done loading it does all the stuff in the brackets
-                response => {   
-                    events = response.results
-                    console.log(events);
-                    localStorage.setItem('events', JSON.stringify(events));
+            // after its done loading it does all the stuff in the brackets
+            response => {   
+                events = response.results
+                console.log(events);
+                localStorage.setItem('events', JSON.stringify(events));
 
 
-                }
-            );
-        }
+            }
+        );
+    }
 
 
     )
@@ -105,7 +103,8 @@ function putSnowStorm(){
     x.setAttribute("src", "snow storm.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
+    document.getElementById("results").appendChild(x);
+
 }
 
 function putThunderStorm(){
@@ -113,79 +112,65 @@ function putThunderStorm(){
     x.setAttribute("src", "Thunderstorm.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-   
+    document.getElementById("results").appendChild(x);   
 }
 function putFlood(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "Flood.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-   
+    document.getElementById("results").appendChild(x);   
 }
 function putHeatWave(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "Heatwave.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-    
+    document.getElementById("results").appendChild(x);    
 }
 function putEarthquake(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-}
+    document.getElementById("results").appendChild(x);}
 function putRain(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "rain.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-}
+    document.getElementById("results").appendChild(x);}
 function putDust(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "dust.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-}
+    document.getElementById("results").appendChild(x);}
 function putEruption(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "erruption.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-}
+    document.getElementById("results").appendChild(x);}
 function putHurricane(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "hurricane.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-}
+    document.getElementById("results").appendChild(x);}
 function noImage(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "none.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-}
+    document.getElementById("results").appendChild(x);}
 function putTornado(){
-    // let img = document.createElement("IMG");
-    // img.src = "Tornado.jpg";
-    // document.body.appendChild(img);
-    // document.write("<br /> Tornado On " + time);
   
     let x = document.createElement("IMG");
     x.setAttribute("src", "Tornado.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.body.appendChild(x);
-  }
+    document.getElementById("results").appendChild(x);  }
 
   
 
