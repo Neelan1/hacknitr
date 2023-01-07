@@ -163,13 +163,17 @@ function printResults(events){
   }
 fetchQuote(JSON.parse(localStorage.getItem('longlat'))).then(
     (response) => {
-        if(response.length = 0)
+        console.log(response)
+
+        if(response.count == 0)
         {
+            console.log('test')
             let text = document.createElement('h1')
             text.innerHTML='NO RESULTS, you are SAFE!'
-            document.getElementById('nothing').append(text);
+            document.getElementById('nothing').appendChild(text);
         }
         else {
+            console.log('test3')
             events = response.results;
             console.log(events);
             printResults(events);
