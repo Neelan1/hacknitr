@@ -42,9 +42,7 @@ body {
 
 button{
   position: relative;
-  background-color: rgb(73, 32, 189);
-  width: 100px;
-  height: 50px;
+  background-color: rgb(27, 163, 45);
   color: red;
   border-radius: 20px;
   border: 5px;
@@ -52,11 +50,9 @@ button{
 }
 button:active{
   position: relative;
-  box-shadow: 2px 2px rgb(46, 22, 114);
-  background-color: rgb(56, 25, 143);
-  width: 100px;
-  height: 50px;
-  color: red;
+  box-shadow: 2px 2px rgb(22, 134, 46);
+  background-color: rgb(22, 134, 46);
+  color: rgb(255, 255, 255);
   border-radius: 20px;
   border: 5px;
   transform: translate(2px,2px)
