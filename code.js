@@ -1,9 +1,29 @@
 
+async function fetchWeather(place) // async means it happens with 
+{
+    // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
+    // it searches terror disasters, and severe weather everywhere all time 
+
+
+
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76fd3f0ca85045e899633353230601&q=${place[0]},${place[1]}&days=7&aqi=no&alerts=no`);
+    if (response.ok)  { // checks if response works
+        
+        return await response.json(); // returns it
+    }
+    else {
+        console.log("FAIL"); // says if it fails
+
+    }
+}
 async function fetchLongLat(country, city) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
-    
+
+    console.log(country)
+    console.log(city)
+
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0`);
     if (response.ok)  { // checks if response works
         
@@ -15,6 +35,8 @@ async function fetchLongLat(country, city) // async means it happens with
     }
 }
 
+
+
 //returns an object which holds the results
 async function fetchQuote(place) // async means it happens with
 {
@@ -22,8 +44,8 @@ async function fetchQuote(place) // async means it happens with
     // it searches terror disasters, and severe weather everywhere all time 
     const currentDate = new Date();
     const predictedDate = new Date();
-    predictedDate.setDate(predictedDate.getDate() + 90);
-    currentDate.setDate(currentDate.getDate() + 1)
+    predictedDate.setDate(predictedDate.getDate() + 300);
+    currentDate.setDate(currentDate.getDate() + 1);
 
     const options = { // to use api
 
@@ -48,6 +70,7 @@ async function fetchQuote(place) // async means it happens with
     }
     else {
         console.log("FAIL"); // says if it fails
+        
 
     }
 }
@@ -59,29 +82,41 @@ if(!(document.location.href.includes("disaster.html"))){
         e.preventDefault();
         const country = document.getElementById('country').value; //put the id of the input for location
         const city = document.getElementById('city').value; 
-        fetchLongLat(country, city).then( // runs the api fetch and gets the info
+        if(!(country == null || country == ""))
+        {
+            fetchLongLat(country, city).then( // runs the api fetch and gets the info
 
-            // after its done loading it does all the stuff in the brackets
-            response => {  
+                // after its done loading it does all the stuff in the brackets
+                response => {  
+                    
 
-                const longlat = [response[0].lat, response[0].lon];
-                console.log(longlat);
-                fetchQuote(longlat).then( // runs the api fetch and gets the info
+                    const longlat = [response[0].lat, response[0].lon];
+                    console.log(longlat)
+                    localStorage.setItem('longlat', JSON.stringify(longlat));
+                    
+                    fetchWeather(longlat).then( // runs the api fetch and gets the info
 
-                    // after its done loading it does all the stuff in the brackets
-                    response => {   
-                        events = response.results;
-                        console.log(events);
-                        window.localStorage.setItem('events', JSON.stringify(events));
-                        document.location.href = "disaster.html";
-
-
-                    }
-                );
-            }
+                        // after its done loading it does all the stuff in the brackets
+                        (response) => {   
+                            events = response
+                            console.log(events);
+                            window.localStorage.setItem('events', JSON.stringify(events));
+                            
 
 
-        )
+                        }
+                    );
+                }
+
+
+            )
+
+        }
+        else{
+            alert("Invalid Country")
+
+        }
+  
     })
 }
 else 
@@ -214,7 +249,7 @@ function printResults(){
         para.setAttribute('class', 'disaster_text')
         para.innerHTML = '<b>' + events[i].title + '</b>' +" on "  + `${dateStart.getFullYear()}-${dateStart.getMonth() + 1}-${dateStart.getDate() + 1} `+ dateStart.toUTCString().slice(-12) + ' to ' + `${dateEnd.getFullYear()}-${dateEnd.getMonth() + 1}-${dateEnd.getDate() + 1} ` + dateEnd.toUTCString().slice(-12);
         document.getElementById(id).append(para);
-        localStorage.clear();
+        
     }
   }
 
