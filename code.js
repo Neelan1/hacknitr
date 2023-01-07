@@ -1,29 +1,5 @@
 
-let container = document.getElementsByClassName("container-1");
-
-
-const currentDate = new Date();
-const predictedDate = new Date();
-predictedDate.setDate(predictedDate.getDate() + 90);
-
-const options = { // to use api
-
-    headers: {
-        "Authorization": "Bearer 6UZNWzxjB0MV_4xdAmqHHqY9ygw_ZdynrqzKh39J"
-    }
-}
-function getInfo()
-{
-
-
-    
-    //Input info into the api
-    //Jave the api spit the info into the arrays
-
-
-}
-
-async function fetchLongLat(country, city) // async means it happens with
+async function fetchLongLat(country, city) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
@@ -44,7 +20,17 @@ async function fetchQuote(place) // async means it happens with
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
-    
+    const currentDate = new Date();
+    const predictedDate = new Date();
+    predictedDate.setDate(predictedDate.getDate() + 90);
+
+    const options = { // to use api
+
+        headers: {
+            "Authorization": "Bearer 6UZNWzxjB0MV_4xdAmqHHqY9ygw_ZdynrqzKh39J"
+        }
+    }
+
     const response = await fetch(
         'https://api.predicthq.com/v1/events/?limit=100&location_around.origin='    
         + place[0] + ',' + place[1] 
@@ -65,40 +51,43 @@ async function fetchQuote(place) // async means it happens with
     }
 }
 
+if(!(document.location.href.includes("disaster.html"))){
+    const form = document.querySelector('.form');
+    form.addEventListener('submit', (e) =>
+    {
+        e.preventDefault();
+        const country = document.getElementById('country').value; //put the id of the input for location
+        const city = document.getElementById('city').value; 
+        fetchLongLat(country, city).then( // runs the api fetch and gets the info
 
-const form = document.querySelector('.form');
-form.addEventListener('submit', (e) =>
+            // after its done loading it does all the stuff in the brackets
+            response => {  
+
+                const longlat = [response[0].lat, response[0].lon];
+                console.log(longlat);
+                fetchQuote(longlat).then( // runs the api fetch and gets the info
+
+                    // after its done loading it does all the stuff in the brackets
+                    response => {   
+                        events = response.results;
+                        console.log(events);
+                        window.localStorage.setItem('events', JSON.stringify(events));
+                        document.location.href = "disaster.html";
+
+
+                    }
+                );
+            }
+
+
+        )
+    })
+}
+else 
 {
-    e.preventDefault();
-    const country = document.getElementById('country').value; //put the id of the input for location
-    const city = document.getElementById('city').value; 
-    fetchLongLat(country, city).then( // runs the api fetch and gets the info
-
-        // after its done loading it does all the stuff in the brackets
-        response => {  
-
-            const longlat = [response[0].lat, response[0].lon];
-            console.log(longlat);
-            fetchQuote(longlat).then( // runs the api fetch and gets the info
-
-                // after its done loading it does all the stuff in the brackets
-                response => {   
-                    events = response.results
-                    console.log(events);
-                    localStorage.setItem('events', JSON.stringify(events));
-
-
-                }
-            );
-        }
-
-
-    )
-})
-
-
-
-
+    printResults();
+   
+}
 
 function putSnowStorm(){
     let x = document.createElement("IMG");
@@ -137,6 +126,7 @@ function putEarthquake(){
     x.setAttribute("src", "earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
+    const y = document.getElementById('test');
     document.body.appendChild(x);
 }
 function putRain(){
@@ -189,28 +179,30 @@ function putTornado(){
 
   
 
-  function printResults(){
+function printResults(){
+    const events = JSON.parse(window.localStorage.getItem('events'));
+    console.log(events);
     for(let i = 0; i < events.length; i++){
-       if(events[i].title.toLowerCase.includes("earthquake"))
+        if(events[i].title.toLowerCase().includes("earthquake"))
             putEarthquake()
-       if(events[i].title.includes("Snowstorm") || events[i].title.includes("Winter Storm") || events[i].title.includes("Ice"))
+        else if (events[i].title.toLowerCase().includes("snowstorm") || events[i].title.toLowerCase().includes("winter Storm") || events[i].title.toLowerCase().includes("ice") || events[i].title.toLowerCase().includes("blizzard"))
             putSnowStorm();
-       if(events[i].title.toLowerCase.includes("thunderstorm"))
+        else if(events[i].title.toLowerCase().includes("thunderstorm"))
             putThunderstorm();
-       if(events[i].title.toLowerCase.includes("flood"))
+        else if(events[i].title.toLowerCase().includes("flood"))
             putFlood();
-       if(events[i].title.toLowerCase.includes("heatWave"))
+        else if(events[i].title.toLowerCase().includes("heatwave"))
             putHeatWave();
-       if(events[i].title.toLowerCase.includes("tornado") || events[i].title.includes("wind"))
-           putTornado();
-       if(events[i].title.toLowerCase.includes("rain"))
-           putRain();
-       if(events[i].title.toLowerCase.includes("dust") || events[i].title.toLowerCase.includes("sandstorm"))
+        else if(events[i].title.toLowerCase().includes("tornado") || events[i].title.toLowerCase().includes("wind"))
+            putTornado();
+        else if(events[i].title.toLowerCase().includes("rain"))
+            putRain();
+        else if(events[i].title.toLowerCase().includes("dust") || events[i].title.toLowerCase().includes("sandstorm"))
             putDust();
-       if(events[i].title.toLowerCase.includes("eruption"))
-           putEruption();
-       if(events[i].title.toLowerCase.includes("hurricane") || events[i].title.toLowerCase.includes("tropical storm") || events[i].title.toLowerCase.includes("typhoon") || events[i].title.toLowerCase.includes("cyclone"))
-           putHurricane();
+        else if(events[i].title.toLowerCase().includes("eruption"))
+            putEruption();
+        else if(events[i].title.toLowerCase().includes("hurricane") || events[i].title.toLowerCase().includes("tropical storm") || events[i].title.toLowerCase().includes("typhoon") || events[i].title.toLowerCase().includes("cyclone"))
+            putHurricane();
         else{
             noImage();
             const para = document.createElement("p");
@@ -220,6 +212,7 @@ function putTornado(){
         const para = document.createElement("p");
         para.innerHTML = events[i].title +" on " + events[i].start;
         document.body.append(para);
+        localStorage.clear();
     }
   }
 
