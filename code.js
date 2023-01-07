@@ -111,7 +111,7 @@ function putFlood(id){
     x.setAttribute("src", "img-flood.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    x.setAttribute("onclick", function(){window.location.href= "info-earthquake/html"};)
+    x.setAttribute("onclick", function(){window.location.href= "info-earthquake/html"});
     document.getElementById(id).appendChild(x);   
 }
 function putHeatWave(id){
