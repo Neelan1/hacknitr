@@ -23,6 +23,7 @@ async function fetchQuote(place) // async means it happens with
     const currentDate = new Date();
     const predictedDate = new Date();
     predictedDate.setDate(predictedDate.getDate() + 90);
+    currentDate.setDate(currentDate.getDate() + 1)
 
     const options = { // to use api
 
@@ -37,8 +38,8 @@ async function fetchQuote(place) // async means it happens with
         + '&category=disasters,terror,severe-weather' 
         + '&start.lte='
         + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
-        + '&start.gt='
-        + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+        + '&start.gte='
+        + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate() + 1}`
         + '&within=199km@'+ place[0] + ',' + place[1] 
         , options);
     if (response.ok)  { // checks if response works
@@ -162,9 +163,10 @@ function putHurricane(id){
 function noImage(id){
     let x = document.createElement("IMG");
     x.addEventListener("click", function(){window.location.href = "info-none.html"}); 
-    x.setAttribute("src", "img-none.jpg");
+    x.setAttribute("src", "img-none.png");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
+    console.log(document.getElementById(id))
     document.getElementById(id).appendChild(x);}
 function putTornado(id){
     let x = document.createElement("IMG");
@@ -180,7 +182,9 @@ function printResults(){
     const events = JSON.parse(window.localStorage.getItem('events'));
     console.log(events);
     for(let i = 0; i < events.length; i++){
-        const id = 'col' + (i + 1) % 3;
+        const dateStart = new Date(events[i].start);
+        const dateEnd = new Date(events[i].end);
+        const id = 'col' + (i % 3 + 1);
         if(events[i].title.toLowerCase().includes("earthquake"))
             putEarthquake(id)
         else if (events[i].title.toLowerCase().includes("snowstorm") || events[i].title.toLowerCase().includes("winter Storm") || events[i].title.toLowerCase().includes("ice") || events[i].title.toLowerCase().includes("blizzard"))
@@ -202,14 +206,13 @@ function printResults(){
         else if(events[i].title.toLowerCase().includes("hurricane") || events[i].title.toLowerCase().includes("tropical storm") || events[i].title.toLowerCase().includes("typhoon") || events[i].title.toLowerCase().includes("cyclone"))
             putHurricane(id);
         else{
+            console.log(id)
             noImage(id);
-            const para = document.createElement("p");
-            para.innerHTML = events[i].title +" on " + events[i].start;
-            document.getElementById(id).append(para);
+            
         }
         const para = document.createElement("p");
         para.setAttribute('class', 'disaster_text')
-        para.innerHTML = events[i].title +" on " + events[i].start;
+        para.innerHTML = '<b>' + events[i].title + '</b>' +" on "  + `${dateStart.getFullYear()}-${dateStart.getMonth() + 1}-${dateStart.getDate() + 1} `+ dateStart.toUTCString().slice(-12) + ' to ' + `${dateEnd.getFullYear()}-${dateEnd.getMonth() + 1}-${dateEnd.getDate() + 1} ` + dateEnd.toUTCString().slice(-12);
         document.getElementById(id).append(para);
         localStorage.clear();
     }
