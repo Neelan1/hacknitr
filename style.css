@@ -419,3 +419,17 @@ body {font-family: Verdana, sans-serif;}
   position: relative;
   text-align: center;
 }
+.hide{
+  display: none;
+}
+.columns1:hover .hide, .columns2:hover .hide, .columns3:hover .hide, .columns4:hover .hide,.columns5:hover .hide
+{
+  display: block;
+  color: red;
+ 
+}
+.columns6:hover .hide, .columns7:hover .hide{
+  display: block;
+  color: red;
+}
+

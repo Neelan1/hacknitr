@@ -122,9 +122,9 @@ function putTornado(id){
 
   
 
-function printResults(){
-    const events = JSON.parse(window.localStorage.getItem('events'));
-    console.log(events);
+function printResults(events){
+    
+    
     for(let i = 0; i < events.length; i++){
         const dateStart = new Date(events[i].start);
         const dateEnd = new Date(events[i].end);
@@ -161,4 +161,13 @@ function printResults(){
         
     }
   }
+fetchQuote(JSON.parse(localStorage.getItem('longlat'))).then(
+    (response) => {
+        events = response.results;
+        console.log(events);
+        printResults(events);
+
+    }
+    
+)
 

@@ -18,15 +18,10 @@ async function fetchLongLat(country, city) // async means it happens with
 
     }
 }
-
-
-
-//returns an object which holds the results
-
-if(!(document.location.href.includes("disaster.html"))){
-    const form = document.querySelector('.form');
-    form.addEventListener('submit', (e) =>
-    {
+function redirectEvent(form, type)
+{
+    form.addEventListener('submit', (e) => {
+    
         e.preventDefault();
         const country = document.getElementById('country').value; //put the id of the input for location
         const city = document.getElementById('city').value; 
@@ -40,24 +35,34 @@ if(!(document.location.href.includes("disaster.html"))){
 
                     const longlat = [response[0].lat, response[0].lon];
                     localStorage.setItem('longlat', JSON.stringify(longlat));
-                    document.location.href='calender.html'
+                    if(type == 'disaster')
+                        document.location.href='disaster.html'
+                    else if (type == 'weather')
+                        document.location.href='calender.html'
+
+                    
 
                 }
             )
         }
-        else{
+        else {
+
             alert("Invalid Country")
 
         }
-  
-    })
-}
-else 
-{
-    printResults();
-   
+    }
+    )
+
 }
 
+
+//returns an object which holds the results
+
+
+const form1 = document.querySelectorAll('.form')[0];
+const form2 = document.querySelectorAll('.form')[1];
+redirectEvent(form1, 'disaster');
+redirectEvent(form2, 'weather');
 
 
 
