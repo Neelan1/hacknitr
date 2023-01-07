@@ -1,33 +1,5 @@
 
-<<<<<<< HEAD
 async function fetchLongLat(country, city) // async means it happens with 
-=======
-let container = document.getElementsByClassName("container-1");
-
-
-const currentDate = new Date();
-const predictedDate = new Date();
-predictedDate.setDate(predictedDate.getDate() + 90);
-
-const options = { // to use api
-
-    headers: {
-        "Authorization": "Bearer 6UZNWzxjB0MV_4xdAmqHHqY9ygw_ZdynrqzKh39J"
-    }
-}
-function getInfo()
-{
-
-    
-    
-    //Input info into the api
-    //Jave the api spit the info into the arrays
-
-
-}
-
-async function fetchLongLat(country, city) // async means it happens with
->>>>>>> origin/main
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
@@ -78,7 +50,6 @@ async function fetchQuote(place) // async means it happens with
 
     }
 }
-<<<<<<< HEAD
 
 if(!(document.location.href.includes("disaster.html"))){
     const form = document.querySelector('.form');
@@ -117,121 +88,81 @@ else
     printResults();
    
 }
-=======
-const form = document.querySelector('.form');
-form.addEventListener('submit', (e) =>
-{
-    e.preventDefault();
-    const country = document.getElementById('country').value; //put the id of the input for location
-    const city = document.getElementById('city').value; 
-    fetchLongLat(country, city).then( // runs the api fetch and gets the info
 
-    // after its done loading it does all the stuff in the brackets
-    response => {  
-
-        const longlat = [response[0].lat, response[0].lon];
-        console.log(longlat);
-        fetchQuote(longlat).then( // runs the api fetch and gets the info
-
-            // after its done loading it does all the stuff in the brackets
-            response => {   
-                events = response.results
-                console.log(events);
-                localStorage.setItem('events', JSON.stringify(events));
-
-
-            }
-        );
-    }
-
-
-    )
-})
-
-
-
-
->>>>>>> origin/main
-
-function putSnowStorm(){
+function putSnowStorm(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "snow storm.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);
+    document.getElementById(id).appendChild(x);
 
 }
 
-function putThunderStorm(){
+function putThunderStorm(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "Thunderstorm.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);   
+    document.getElementById(id).appendChild(x);   
 }
-function putFlood(){
+function putFlood(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "Flood.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);   
+    document.getElementById(id).appendChild(x);   
 }
-function putHeatWave(){
+function putHeatWave(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "Heatwave.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);    
+    document.getElementById(id).appendChild(x);    
 }
-function putEarthquake(){
+function putEarthquake(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-<<<<<<< HEAD
-    const y = document.getElementById('test');
-    document.body.appendChild(x);
+    document.getElementById(id).appendChild(x);
 }
-=======
-    document.getElementById("results").appendChild(x);}
->>>>>>> origin/main
-function putRain(){
+function putRain(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "rain.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);}
-function putDust(){
+    document.getElementById(id).appendChild(x);}
+function putDust(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "dust.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);}
-function putEruption(){
+    document.getElementById(id).appendChild(x);}
+function putEruption(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "erruption.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);}
-function putHurricane(){
+    document.getElementById(id).appendChild(x);}
+function putHurricane(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "hurricane.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);}
-function noImage(){
+    document.getElementById(id).appendChild(x);}
+function noImage(id){
     let x = document.createElement("IMG");
     x.setAttribute("src", "none.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);}
-function putTornado(){
+    document.getElementById(id).appendChild(x);}
+function putTornado(id){
   
     let x = document.createElement("IMG");
     x.setAttribute("src", "Tornado.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    document.getElementById("results").appendChild(x);  }
+    document.getElementById(id).appendChild(x);  }
 
   
 
@@ -239,37 +170,36 @@ function printResults(){
     const events = JSON.parse(window.localStorage.getItem('events'));
     console.log(events);
     for(let i = 0; i < events.length; i++){
+        const id = 'col' + (i + 1) % 3;
         if(events[i].title.toLowerCase().includes("earthquake"))
-            putEarthquake()
+            putEarthquake(id)
         else if (events[i].title.toLowerCase().includes("snowstorm") || events[i].title.toLowerCase().includes("winter Storm") || events[i].title.toLowerCase().includes("ice") || events[i].title.toLowerCase().includes("blizzard"))
-            putSnowStorm();
+            putSnowStorm(id);
         else if(events[i].title.toLowerCase().includes("thunderstorm"))
-            putThunderstorm();
+            putThunderstorm(id);
         else if(events[i].title.toLowerCase().includes("flood"))
-            putFlood();
+            putFlood(id);
         else if(events[i].title.toLowerCase().includes("heatwave"))
-            putHeatWave();
+            putHeatWave(id);
         else if(events[i].title.toLowerCase().includes("tornado") || events[i].title.toLowerCase().includes("wind"))
-            putTornado();
+            putTornado(i);
         else if(events[i].title.toLowerCase().includes("rain"))
-            putRain();
+            putRain(id);
         else if(events[i].title.toLowerCase().includes("dust") || events[i].title.toLowerCase().includes("sandstorm"))
-            putDust();
+            putDust(id);
         else if(events[i].title.toLowerCase().includes("eruption"))
-            putEruption();
+            putEruption(id);
         else if(events[i].title.toLowerCase().includes("hurricane") || events[i].title.toLowerCase().includes("tropical storm") || events[i].title.toLowerCase().includes("typhoon") || events[i].title.toLowerCase().includes("cyclone"))
-            putHurricane();
+            putHurricane(id);
         else{
-            noImage();
+            noImage(id);
             const para = document.createElement("p");
             para.innerHTML = events[i].title +" on " + events[i].start;
-            const column = document.getElementById('col' + i % 3)
-            document.column.append(para);
+            document.getElementById(id).append(para);
         }
         const para = document.createElement("p");
         para.innerHTML = events[i].title +" on " + events[i].start;
-        const column = document.getElementById('col' + i % 3);
-        document.column.append(para);
+        document.getElementById(id).append(para);
         localStorage.clear();
     }
   }

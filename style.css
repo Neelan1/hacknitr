@@ -229,7 +229,13 @@ header {
 #results{
   display: flex;
   justify-content: center;
+  flex-direction: row;
+
+}
+.column{
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 
 }
 
