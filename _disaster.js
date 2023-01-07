@@ -110,7 +110,7 @@ function noImage(id){
     x.setAttribute("src", "img-none.png");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    console.log(document.getElementById(id))
+    
     document.getElementById(id).appendChild(x);}
 function putTornado(id){
     let x = document.createElement("IMG");
@@ -150,7 +150,7 @@ function printResults(events){
         else if(events[i].title.toLowerCase().includes("hurricane") || events[i].title.toLowerCase().includes("tropical storm") || events[i].title.toLowerCase().includes("typhoon") || events[i].title.toLowerCase().includes("cyclone"))
             putHurricane(id);
         else{
-            console.log(id)
+            
             noImage(id);
             
         }

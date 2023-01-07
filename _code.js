@@ -21,10 +21,20 @@ async function fetchLongLat(country, city) // async means it happens with
 function redirectEvent(form, type)
 {
     form.addEventListener('submit', (e) => {
-    
+        let country;
+        let city;
         e.preventDefault();
-        const country = document.getElementById('country').value; //put the id of the input for location
-        const city = document.getElementById('city').value; 
+        if (type == 'disaster')
+        {
+            country = document.getElementById('country1').value; //put the id of the input for location
+            city = document.getElementById('city1').value; 
+        }
+        else
+        {
+            country = document.getElementById('country2').value; //put the id of the input for location
+            city = document.getElementById('city2').value; 
+        }
+
         if(!(country == null || country == ""))
         {
             fetchLongLat(country, city).then( // runs the api fetch and gets the info
