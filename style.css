@@ -214,6 +214,12 @@ header {
   flex-direction: row;
   align-items: baseline;
 }
+.results{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+}
 
 #results :hover {
   opacity: 70%;
@@ -395,6 +401,7 @@ body {font-family: Verdana, sans-serif;}
 }
 
 #bigbox {
+  
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -438,14 +445,83 @@ body {font-family: Verdana, sans-serif;}
   color: red;
 }
 
-.hovertext1, .hovertext2, .hovertext3, .hovertext4, .hovertext5, .hovertext6, .hovertext7 {
+.hovertext1{
+ 
   display: flex;
-  margin: 1rem;
+  width: 200px;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   list-style: none;
   color: white;
+
   text-decoration: none;
 }
+.hovertext2{
+  width: 200px;
 
+  
+  display: flex;
+  
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  color: white;
 
+  text-decoration: none;
+}
+.hovertext3{
+  width: 200px;
+
+  display: flex;
+  
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  color: white;
+
+  text-decoration: none;
+}
+.hovertext4{
+  display: flex;
+  
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  color: white;
+  width: 200px;
+
+  text-decoration: none;
+}
+.hovertext5{
+  display: flex;
+  
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  color: white;
+  width: 200px;
+
+  text-decoration: none;
+}
+.hovertext6{
+  display: flex;
+  width: 200px;
+  
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  color: white;
+
+  text-decoration: none;
+}
+.hovertext7{
+  display: flex;
+  width: 200px;
+ 
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  color: white;
+
+  text-decoration: none;
+}
