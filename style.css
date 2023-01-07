@@ -238,12 +238,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-<<<<<<< HEAD
-  min-width: 50vh;
-
-=======
   margin: 2rem;
->>>>>>> origin/main
 
 }
 
@@ -254,4 +249,9 @@ header {
 .surviveImage {
   height: 40%;
   width: 40%;
+}
+.disaster_text
+{
+  
+
 }

@@ -39,7 +39,7 @@ async function fetchQuote(place) // async means it happens with
         + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
         + '&start.gt='
         + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
-        + '&within=250km@'+ place[0] + ',' + place[1] 
+        + '&within=300km@'+ place[0] + ',' + place[1] 
         , options);
     if (response.ok)  { // checks if response works
         console.log("SUCCESS");
@@ -198,6 +198,7 @@ function printResults(){
             document.getElementById(id).append(para);
         }
         const para = document.createElement("p");
+        para.setAttribute('class', 'disaster_text')
         para.innerHTML = events[i].title +" on " + events[i].start;
         document.getElementById(id).append(para);
         localStorage.clear();
