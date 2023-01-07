@@ -224,3 +224,12 @@ header {
   display: flex;
   flex-direction: row;
 }
+
+#survivalBackground {
+  background-color: rgb(100, 172, 162);
+}
+
+.surviveImage {
+  height: 40%;
+  width: 40%;
+}
