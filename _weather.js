@@ -23,7 +23,7 @@ function getWeather(days){
 let month = 0;
 let year = 0;
 function getCalender(){
-    let id = (i % 7) + 1
+    let id = 0;
     let objToday = getWeather(0);
     let weekDay = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
     let months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
@@ -67,16 +67,17 @@ function getCalender(){
     // visualYear.innerHTML = (curYear);
 
     for(let j = 0; j < weekDayList.length; j++){
+        id = (j % 7) + 1
         let visualWeekDay = document.createElement("li");
         visualWeekDay.setAttribute('class', 'weekDay');
         visualWeekDay.innerHTML = (weekDayList[j]);
-        document.getElementById(id).appendChild(visualWeekDay)
-    }
-    for(let k = 0; k < dayList.length; k++){
+        document.getElementById("calendar" + id).appendChild(visualWeekDay)
+    
         let visualDay= document.createElement("li");
         visualDay.setAttribute('class', 'day');
-        visualDay.innerHTML = (dayList[k]);
-        document.getElementById(id).appendChild(visualDay);
+        visualDay.innerHTML = (dayList[j]);
+        document.getElementById("calendar" + id).appendChild(visualDay);
+        
     }
 }
 fetchWeather(JSON.parse(localStorage.getItem('longlat'))).then( // runs the api fetch and gets the info
