@@ -432,8 +432,20 @@ body {font-family: Verdana, sans-serif;}
   display: block;
   color: red;
 }
+
 .hovertext1:hover .hide{
   display: block;
   color: red;
 }
+
+.hovertext1, .hovertext2, .hovertext3, .hovertext4, .hovertext5, .hovertext6, .hovertext7 {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  flex-direction: row;
+  list-style: none;
+  color: white;
+  text-decoration: none;
+}
+
 
