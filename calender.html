@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
-<body>
+<body onmouseover="stopText()">
   
   <nav class="topbar">
     <div class="title">Natural Disaster Survival</div>
@@ -24,25 +24,25 @@
   <div></div>
   <h1 style="color: white" class="calendertitle"><b>Weather Forecast</b></h1>
   <div id="bigbox">
-      <div class="columns1" id="calendar1" onmouseover="">
-      <p class="hide"></p>
-  </div>
-      <div class="columns2" id="calendar2" onmouseover="">
-      <p class="hide"></p>
-  </div>
-      <div class="columns3" id="calendar3" onmouseover="">
-      <p class="hide"></p>
-  </div>
-      <div class="columns4" id="calendar4" onmouseover="">
-      <p class="hide"></p>
-  </div>
-      <div class="columns5" id="calendar5" onmouseover="">
+    <div class="columns1" id="calendar1" onmouseover="displayText('hovertext1')">
       <p class="hide"></p>
     </div>
-      <div class="columns6" id="calendar6" onmouseover="">
+      <div class="columns2" id="calendar2" onmouseover="displayText('hovertext2')">
+      <p class="hide"></p>
+  </div>
+      <div class="columns3" id="calendar3" onmouseover="displayText('hovertext3')">
+      <p class="hide"></p>
+  </div>
+      <div class="columns4" id="calendar4" onmouseover="displayText('hovertext4')">
+      <p class="hide"></p>
+  </div>
+      <div class="columns5" id="calendar5" onmouseover="displayText('hovertext5')">
       <p class="hide"></p>
     </div>
-      <div class="columns7" id="calendar7" onmouseover="">
+      <div class="columns6" id="calendar6" onmouseover="displayText('hovertext6')">
+      <p class="hide"></p>
+    </div>
+      <div class="columns7" id="calendar7" onmouseover="displayText('hovertext7')">
       <p class="hide"></p>
     </div>
   </div>
@@ -50,27 +50,27 @@
 
   
   
-    <div class="smallbox">
-      <div class="hovertext1">
-        <div class="hide">ssss</div>
+    <div class="bigbox2">
+      <div class="hovertext1" id="hovertext1">
+        
       </div>
-      <div class="hovertext2">
-        <p class="hide">ssss</p>
+      <div class="hovertext2" id="hovertext2">
+        
       </div>
-      <div class="hovertext3">
-        <p class="hide">ssss</p>
+      <div class="hovertext3" id="hovertext3">
+        
       </div>
-      <div class="hovertext4">
-        <p class="hide">ssss</p>
+      <div class="hovertext4" id="hovertext4">
+        
       </div>
-      <div class="hovertext5">
-        <p class="hide">ssss</p>
+      <div class="hovertext5" id="hovertext5">
+        
       </div>
-      <div class="hovertext6">
-        <p class="hide">ssss</p>
+      <div class="hovertext6" id="hovertext6">
+        
       </div>
-      <div class="hovertext7">
-        <p class="hide">ssss</p>
+      <div class="hovertext7" id="hovertext7">
+        
       </div>
     </div>
  

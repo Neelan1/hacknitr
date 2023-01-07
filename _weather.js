@@ -15,6 +15,7 @@ async function fetchWeather(place) // async means it happens with
 
     }
 }
+
 function getWeather(days){
     let objToday = new Date()
     objToday.setDate(objToday.getDate() + days)
@@ -80,14 +81,40 @@ function getCalender(){
         
     }
 }
+let counter = 0;
+function displayText(id)
+{
+    if( counter == 0)
+    {
+        counter++;
+        let text = document.createElement("p");
+        text.innerHTML = JSON.stringify(weatherList)
+        document.getElementById(id).appendChild(text);
+    
+
+    }
+
+
+
+}
+function stopText()
+{
+    
+
+
+}
+let weatherList;
 fetchWeather(JSON.parse(localStorage.getItem('longlat'))).then( // runs the api fetch and gets the info
 
         // after its done loading it does all the stuff in the brackets
         (response) => {
-            events =
-            events = response.forecast
-            console.log(events);
+            let events =[response.current]
+            let events2 = response.forecast.forecastday
+            Array.prototype.push.apply(events, events2)
+            events 
             getCalender();
+            weatherList = events;
+
 
         }
     );

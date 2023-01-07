@@ -432,4 +432,8 @@ body {font-family: Verdana, sans-serif;}
   display: block;
   color: red;
 }
+.hovertext1:hover .hide{
+  display: block;
+  color: red;
+}
 
