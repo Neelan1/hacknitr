@@ -1,7 +1,4 @@
 
-<<<<<<< HEAD
-async function fetchLongLat(country, city) // async means it happens with 
-=======
 let container = document.getElementsByClassName("container-1");
 
 
@@ -27,7 +24,6 @@ function getInfo()
 }
 
 async function fetchLongLat(country, city) // async means it happens with
->>>>>>> origin/main
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
     // it searches terror disasters, and severe weather everywhere all time 
@@ -78,46 +74,6 @@ async function fetchQuote(place) // async means it happens with
 
     }
 }
-<<<<<<< HEAD
-
-if(!(document.location.href.includes("disaster.html"))){
-    const form = document.querySelector('.form');
-    form.addEventListener('submit', (e) =>
-    {
-        e.preventDefault();
-        const country = document.getElementById('country').value; //put the id of the input for location
-        const city = document.getElementById('city').value; 
-        fetchLongLat(country, city).then( // runs the api fetch and gets the info
-
-            // after its done loading it does all the stuff in the brackets
-            response => {  
-
-                const longlat = [response[0].lat, response[0].lon];
-                console.log(longlat);
-                fetchQuote(longlat).then( // runs the api fetch and gets the info
-
-                    // after its done loading it does all the stuff in the brackets
-                    response => {   
-                        events = response.results;
-                        console.log(events);
-                        window.localStorage.setItem('events', JSON.stringify(events));
-                        document.location.href = "disaster.html";
-
-
-                    }
-                );
-            }
-
-
-        )
-    })
-}
-else 
-{
-    printResults();
-   
-}
-=======
 const form = document.querySelector('.form');
 form.addEventListener('submit', (e) =>
 {
@@ -151,7 +107,6 @@ form.addEventListener('submit', (e) =>
 
 
 
->>>>>>> origin/main
 
 function putSnowStorm(){
     let x = document.createElement("IMG");
@@ -188,13 +143,7 @@ function putEarthquake(){
     x.setAttribute("src", "earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-<<<<<<< HEAD
-    const y = document.getElementById('test');
-    document.body.appendChild(x);
-}
-=======
     document.getElementById("results").appendChild(x);}
->>>>>>> origin/main
 function putRain(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "rain.jpg");
