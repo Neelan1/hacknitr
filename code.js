@@ -1,4 +1,3 @@
-
 async function fetchWeather(place) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
@@ -249,9 +248,64 @@ function printResults(){
         para.setAttribute('class', 'disaster_text')
         para.innerHTML = '<b>' + events[i].title + '</b>' +" on "  + `${dateStart.getFullYear()}-${dateStart.getMonth() + 1}-${dateStart.getDate() + 1} `+ dateStart.toUTCString().slice(-12) + ' to ' + `${dateEnd.getFullYear()}-${dateEnd.getMonth() + 1}-${dateEnd.getDate() + 1} ` + dateEnd.toUTCString().slice(-12);
         document.getElementById(id).append(para);
-        
+
     }
   }
+function getWeather(days){
+    let objToday = new Date()
+    currentDate.setDate(objToday.getDate() + days)
+}
+
+function getCalender();{
+    let objDay = getWeather(0);
+    let weekDay = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+    let months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+    let weekDayList = [
+
+    ]
+    let dayList = [
+
+    ]
+    //Code for the first day to get the month and year along with the day and day of the week to append
+    objDay = getWeather(i);
+    let curDay = objToday.getDay();
+    let dayOfWeek = weekday[objToday.getDay()]
+    weekDayList.push(dayOfWeek);
+    dayList.push(curDay);
+    let curMonth = months[objToday.getMonth()];
+    let curYear = objToday.getFullYear();
+    //Loops through the other 6 days 
+    for(let i = 1; i < 7; i++){
+        objDay = getWeather(i);
+        let curDay = objToday.getDay();
+        let dayOfWeek = weekday[objToday.getDay()]
+        
+        weekDayList.push(dayOfWeek);
+        dayList.push(curDay);
+    }
+    //Turns the year and month into html elements
+    let visualMonth = document.createElement("li");
+    visualMonth.setAttribute('class', 'month');
+    visualMonth.innerHTML(curMonth);
+    
+    let visualYear = document.createElement("li");
+    visualMonth.setAttribute('class', 'year');
+    visualMonth.innerHTML(curYear);
+
+    for(let j = 0; i < weekDayList.length; i++){
+        let visualWeekDay = document.createElement("li");
+        visualMonth.setAttribute('class', 'weekDay');
+        visualMonth.innerHTML(weekDay);
+        document.getElementById(id).appendChild(visualWeekDay)
+    }
+    for(let k = 0; i < dayList.length; i++){
+        let visualDay= document.createElement("li");
+        visualMonth.setAttribute('class', 'day');
+        visualMonth.innerHTML(curDay);
+        document.getElementById(id).appendChild(visualDay);  
+    }
+}
+
 
 
 
