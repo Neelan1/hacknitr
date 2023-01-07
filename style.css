@@ -368,7 +368,7 @@ body {font-family: Verdana, sans-serif;}
   background-size: cover;
 }
 
-#meme-images {
+.meme-images {
   display: flex;
   justify-content: center;
   align-items: center;
