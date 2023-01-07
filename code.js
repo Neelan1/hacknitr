@@ -100,7 +100,6 @@ form.addEventListener('submit', (e) =>
 
 
 
-
 function putSnowStorm(){
     let x = document.createElement("IMG");
     x.setAttribute("src", "snow storm.jpg");
