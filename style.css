@@ -5,8 +5,12 @@
 }
 
 body {
+  background-color: rgb(54,57,62);
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .topbar {
@@ -37,7 +41,10 @@ body {
   color: white;
   padding: 16px;
   display: block;
+}
 
+.navigationbar:active {
+  opacity: 50%;
 }
 
 button{
@@ -59,26 +66,6 @@ button:active{
 }
 button:hover{
   opacity: 85%;
-  /* background-color: rgb(73, 32, 189); */
-}
-
-
-
-#area1{
-  position: relative;
-}
-
-#button1{
-  position: relative;
-  left: 50%;
-}
-#button2{
-  position: relative;
-  left: 0%;
-}
-#button3{
-  position: relative;
-  left: 80%;
 }
 
 /* Code for location question */
@@ -87,24 +74,20 @@ button:hover{
   --border-color: #eee;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
 header {
   background-color: var(--primary-color);
   color: #fff;
   text-align: center;
   padding: 50px 0;
   margin-bottom: 50px;
+  opacity: 90%;
 }
 
 .container {
   max-width: 600px;
   margin: 0 auto;
   padding-bottom: 50px;
+  
 }
 
 .form {
@@ -230,7 +213,15 @@ header {
   justify-content: center;
   flex-direction: row;
   align-items: baseline;
+}
 
+#results :hover {
+  opacity: 70%;
+}
+
+.column:active {
+  position: relative;
+  transform: translate(2px,2px)
 }
 
 .column{
@@ -287,6 +278,7 @@ header {
   border: 2px solid;
   border-color: #000;
   padding: 8px;
+  background-color: rgb(212, 210, 210);
 }
   
 * {box-sizing: border-box;}
@@ -369,4 +361,25 @@ body {font-family: Verdana, sans-serif;}
 
 @media screen and (max-width: 290px) {
   .weekdays li, .days li {width: 12.2%;}
+}
+#epic-background {
+  background-image: url("img-gif background.gif");
+  background-size: cover;
+}
+
+#meme-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.info-none-images1 {
+  margin: 2rem;
+  width: 300px;
+  height: 600px;
+}
+
+.info-none-images2 {
+  margin: 2rem;
 }
