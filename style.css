@@ -250,8 +250,12 @@ header {
   height: 40%;
   width: 40%;
 }
+
 .disaster_text
 {
-  
-
+  display: flex;
+  flex-wrap: wrap;
+  width: 304px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
