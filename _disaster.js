@@ -163,9 +163,19 @@ function printResults(events){
   }
 fetchQuote(JSON.parse(localStorage.getItem('longlat'))).then(
     (response) => {
-        events = response.results;
-        console.log(events);
-        printResults(events);
+        if(response.length = 0)
+        {
+            let text = document.createElement('h1')
+            text.innerHTML='NO RESULTS, you are SAFE!'
+            document.getElementById('nothing').append(text);
+        }
+        else {
+            events = response.results;
+            console.log(events);
+            printResults(events);
+
+        }
+
 
     }
     
