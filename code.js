@@ -1,3 +1,4 @@
+
 async function fetchLongLat(country, city) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
@@ -38,7 +39,7 @@ async function fetchQuote(place) // async means it happens with
         + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
         + '&start.gt='
         + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
-        + '&within=300km@'+ place[0] + ',' + place[1] 
+        + '&within=199km@'+ place[0] + ',' + place[1] 
         , options);
     if (response.ok)  { // checks if response works
         console.log("SUCCESS");
@@ -234,3 +235,4 @@ function printResults(){
 
 
 //On a specific day (0-90 days)
+
