@@ -368,7 +368,7 @@ body {font-family: Verdana, sans-serif;}
   background-size: cover;
 }
 
-#meme-images {
+.meme-images {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -388,7 +388,10 @@ body {font-family: Verdana, sans-serif;}
 #bigbox li {
   display: flex;
   list-style: none;
-  margin: 2rem;
+  margin: auto;
+  padding: 2rem;
+  width: 200px;
+  height: 100px;
 }
 
 #bigbox {
@@ -398,12 +401,35 @@ body {font-family: Verdana, sans-serif;}
   align-items: baseline;
 }
 
-.pp {
+.columns1, .columns2, .columns3, .columns4, .columns5, .columns6, .columns7 {
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  background-color: #009e6c;
+  background-color: #84b4c7;
+  border-style: solid;
+  border-width: thin;
+}
+
+.calendertitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .subtitle{
   position: relative;
   text-align: center;
 }
+.hide{
+  display: none;
+}
+.columns1:hover .hide, .columns2:hover .hide, .columns3:hover .hide, .columns4:hover .hide,.columns5:hover .hide
+{
+  display: block;
+  color: red;
+ 
+}
+.columns6:hover .hide, .columns7:hover .hide{
+  display: block;
+  color: red;
+}
+
