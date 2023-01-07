@@ -403,3 +403,7 @@ body {font-family: Verdana, sans-serif;}
   flex-direction: column;
   background-color: #009e6c;
 }
+.subtitle{
+  position: relative;
+  text-align: center;
+}
