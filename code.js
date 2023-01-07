@@ -1,4 +1,3 @@
-
 async function fetchLongLat(country, city) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
@@ -94,7 +93,6 @@ function putSnowStorm(id){
     x.setAttribute("src", "img-snow storm.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    x.setAttribute()
     document.getElementById(id).appendChild(x);
 
 }
@@ -111,7 +109,6 @@ function putFlood(id){
     x.setAttribute("src", "img-flood.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    x.setAttribute("onclick", function(){window.location.href= "info-earthquake/html"});
     document.getElementById(id).appendChild(x);   
 }
 function putHeatWave(id){
@@ -126,7 +123,6 @@ function putEarthquake(id){
     x.setAttribute("src", "img-earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
-    // x.setAttribute("onclick", function(){window.location.href= "info-earthquake/html"};)
     document.getElementById(id).appendChild(x);
 }
 function putRain(id){
@@ -228,4 +224,3 @@ function printResults(){
 
 
 //On a specific day (0-90 days)
-
