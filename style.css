@@ -220,7 +220,6 @@ header {
   cursor: pointer;
 }
 
-
 .surviveImage{
   width: 40%;
   height: 40%;
@@ -262,3 +261,31 @@ header {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.aboutus {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium';
+}
+
+#Contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+  font-family: 'Franklin Gothic Medium';
+}
+
+.daniel-contacts, .neelan-contacts, .jaiden-contacts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem;
+  border: 2px solid;
+  border-color: #000;
+  padding: 8px;
+}
+  
