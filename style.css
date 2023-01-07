@@ -233,9 +233,12 @@ header {
 
 }
 .column{
+  background-color: rgb(100, 172, 162);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 50vh;
+
 
 }
 

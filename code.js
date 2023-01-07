@@ -39,7 +39,7 @@ async function fetchQuote(place) // async means it happens with
         + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
         + '&start.gt='
         + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
-        + '&within=300km@'+ place[0] + ',' + place[1] 
+        + '&within=250km@'+ place[0] + ',' + place[1] 
         , options);
     if (response.ok)  { // checks if response works
         console.log("SUCCESS");
@@ -91,7 +91,7 @@ else
 
 function putSnowStorm(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "snow storm.jpg");
+    x.setAttribute("src", "img-snow storm.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);
@@ -107,52 +107,52 @@ function putThunderStorm(id){
 }
 function putFlood(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "Flood.webp");
+    x.setAttribute("src", "img-flood.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);   
 }
 function putHeatWave(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "Heatwave.jpg");
+    x.setAttribute("src", "img-Heatwave.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);    
 }
 function putEarthquake(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "earthquake.webp");
+    x.setAttribute("src", "img-earthquake.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);
 }
 function putRain(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "rain.jpg");
+    x.setAttribute("src", "img-rain.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);}
 function putDust(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "dust.webp");
+    x.setAttribute("src", "img-dust.webp");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);}
 function putEruption(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "erruption.jpg");
+    x.setAttribute("src", "img-eruption.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);}
 function putHurricane(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "hurricane.jpg");
+    x.setAttribute("src", "img-hurricane.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);}
 function noImage(id){
     let x = document.createElement("IMG");
-    x.setAttribute("src", "none.jpg");
+    x.setAttribute("src", "img-none.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
     document.getElementById(id).appendChild(x);}
