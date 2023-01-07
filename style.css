@@ -362,6 +362,7 @@ body {font-family: Verdana, sans-serif;}
 @media screen and (max-width: 290px) {
   .weekdays li, .days li {width: 12.2%;}
 }
+
 #epic-background {
   background-image: url("img-gif background.gif");
   background-size: cover;
@@ -382,4 +383,23 @@ body {font-family: Verdana, sans-serif;}
 
 .info-none-images2 {
   margin: 2rem;
+}
+
+#bigbox li {
+  display: flex;
+  list-style: none;
+  margin: 2rem;
+}
+
+#bigbox {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.pp {
+  display: flex;
+  flex-direction: column;
+  background-color: #009e6c;
 }
