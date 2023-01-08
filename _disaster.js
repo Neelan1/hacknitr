@@ -114,6 +114,7 @@ function noImage(id){
     document.getElementById(id).appendChild(x);}
 function putTornado(id){
     let x = document.createElement("IMG");
+    x.addEventListener("click", function(){window.location.href = "info-tornado.html"}); 
     x.setAttribute("src", "Tornado.jpg");
     x.setAttribute("width", "304");
     x.setAttribute("height", "228");
