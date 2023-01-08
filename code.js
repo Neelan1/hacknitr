@@ -1,20 +1,4 @@
-async function fetchWeather(place) // async means it happens with 
-{
-    // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
-    // it searches terror disasters, and severe weather everywhere all time 
 
-
-
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76fd3f0ca85045e899633353230601&q=${place[0]},${place[1]}&days=7&aqi=no&alerts=no`);
-    if (response.ok)  { // checks if response works
-        
-        return await response.json(); // returns it
-    }
-    else {
-        console.log("FAIL"); // says if it fails
-
-    }
-}
 async function fetchLongLat(country, city) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
@@ -33,281 +17,64 @@ async function fetchLongLat(country, city) // async means it happens with
 
     }
 }
-
-
-
-//returns an object which holds the results
-async function fetchQuote(place) // async means it happens with
+function redirectEvent(form, type)
 {
-    // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
-    // it searches terror disasters, and severe weather everywhere all time 
-    const currentDate = new Date();
-    const predictedDate = new Date();
-    predictedDate.setDate(predictedDate.getDate() + 300);
-    currentDate.setDate(currentDate.getDate() + 1);
-
-    const options = { // to use api
-
-        headers: {
-            "Authorization": "Bearer 6UZNWzxjB0MV_4xdAmqHHqY9ygw_ZdynrqzKh39J"
-        }
-    }
-
-    const response = await fetch(
-        'https://api.predicthq.com/v1/events/?limit=100&location_around.origin='    
-        + place[0] + ',' + place[1] 
-        + '&category=disasters,terror,severe-weather' 
-        + '&start.lte='
-        + `${predictedDate.getFullYear()}-${predictedDate.getMonth() + 1}-${predictedDate.getDate()}`
-        + '&start.gte='
-        + `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate() + 1}`
-        + '&within=199km@'+ place[0] + ',' + place[1] 
-        , options);
-    if (response.ok)  { // checks if response works
-        console.log("SUCCESS");
-        return await response.json(); // returns it
-    }
-    else {
-        console.log("FAIL"); // says if it fails
-        
-
-    }
-}
-
-if(!(document.location.href.includes("disaster.html"))){
-    const form = document.querySelector('.form');
-    form.addEventListener('submit', (e) =>
-    {
+    form.addEventListener('submit', (e) => {
+        let country;
+        let city;
         e.preventDefault();
-        const country = document.getElementById('country').value; //put the id of the input for location
-        const city = document.getElementById('city').value; 
+        if (type == 'disaster')
+        {
+            country = document.getElementById('country1').value; //put the id of the input for location
+            city = document.getElementById('city1').value; 
+        }
+        else
+        {
+            country = document.getElementById('country2').value; //put the id of the input for location
+            city = document.getElementById('city2').value; 
+        }
+
         if(!(country == null || country == ""))
         {
+            localStorage.setItem('location', JSON.stringify([city, country]));
             fetchLongLat(country, city).then( // runs the api fetch and gets the info
 
                 // after its done loading it does all the stuff in the brackets
                 response => {  
                     
 
-                    const longlat = [response[0].lat, response[0].lon];
-                    console.log(longlat)
-                    localStorage.setItem('longlat', JSON.stringify(longlat));
                     
-                    fetchWeather(longlat).then( // runs the api fetch and gets the info
 
-                        // after its done loading it does all the stuff in the brackets
-                        (response) => {   
-                            events = response
-                            console.log(events);
-                            window.localStorage.setItem('events', JSON.stringify(events));
-                            
+                    const longlat = [response[0].lat, response[0].lon];
+                    localStorage.setItem('longlat', JSON.stringify(longlat));
+                    if(type == 'disaster')
+                        document.location.href='disaster.html'
+                    else if (type == 'weather')
+                        document.location.href='calender.html'
 
+                    
 
-                        }
-                    );
                 }
-
-
             )
-
         }
-        else{
+        else {
+
             alert("Invalid Country")
 
         }
-  
-    })
-}
-else 
-{
-    printResults();
-   
-}
-
-function putSnowStorm(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-snowstorm.html"}); 
-    x.setAttribute("src", "img-snow storm.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);
-
-}
-
-function putThunderStorm(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-thunderstorm.html"}); 
-    x.setAttribute("src", "Thunderstorm.webp");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);   
-}
-function putFlood(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-flood.html"}); 
-    x.setAttribute("src","img-flood.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);   
-}
-function putHeatWave(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-heatwave.html"}); 
-    x.setAttribute("src", "img-Heatwave.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);    
-}
-function putEarthquake(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-earthquake.html"}); 
-    x.setAttribute("src", "img-earthquake.webp");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);
-}
-function putRain(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-rain.html"}); 
-    x.setAttribute("src", "img-rain.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);}
-function putDust(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-sandstorm.html"}); 
-    x.setAttribute("src", "img-dust.webp");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);}
-function putEruption(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-eruption.html"}); 
-    x.setAttribute("src", "img-eruption.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);}
-function putHurricane(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-hurricane.html"}); 
-    x.setAttribute("src", "img-hurricane.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);}
-function noImage(id){
-    let x = document.createElement("IMG");
-    x.addEventListener("click", function(){window.location.href = "info-none.html"}); 
-    x.setAttribute("src", "img-none.png");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    console.log(document.getElementById(id))
-    document.getElementById(id).appendChild(x);}
-function putTornado(id){
-    let x = document.createElement("IMG");
-    x.setAttribute("src", "Tornado.jpg");
-    x.setAttribute("width", "304");
-    x.setAttribute("height", "228");
-    document.getElementById(id).appendChild(x);  
-}
-
-  
-
-function printResults(){
-    const events = JSON.parse(window.localStorage.getItem('events'));
-    console.log(events);
-    for(let i = 0; i < events.length; i++){
-        const dateStart = new Date(events[i].start);
-        const dateEnd = new Date(events[i].end);
-        const id = 'col' + (i % 3 + 1);
-        if(events[i].title.toLowerCase().includes("earthquake"))
-            putEarthquake(id)
-        else if (events[i].title.toLowerCase().includes("snowstorm") || events[i].title.toLowerCase().includes("winter Storm") || events[i].title.toLowerCase().includes("ice") || events[i].title.toLowerCase().includes("blizzard"))
-            putSnowStorm(id);
-        else if(events[i].title.toLowerCase().includes("thunderstorm"))
-            putThunderstorm(id);
-        else if(events[i].title.toLowerCase().includes("flood"))
-            putFlood(id);
-        else if(events[i].title.toLowerCase().includes("heatwave"))
-            putHeatWave(id);
-        else if(events[i].title.toLowerCase().includes("tornado") || events[i].title.toLowerCase().includes("wind"))
-            putTornado(i);
-        else if(events[i].title.toLowerCase().includes("rain"))
-            putRain(id);
-        else if(events[i].title.toLowerCase().includes("dust") || events[i].title.toLowerCase().includes("sandstorm"))
-            putDust(id);
-        else if(events[i].title.toLowerCase().includes("eruption"))
-            putEruption(id);
-        else if(events[i].title.toLowerCase().includes("hurricane") || events[i].title.toLowerCase().includes("tropical storm") || events[i].title.toLowerCase().includes("typhoon") || events[i].title.toLowerCase().includes("cyclone"))
-            putHurricane(id);
-        else{
-            console.log(id)
-            noImage(id);
-            
-        }
-        const para = document.createElement("p");
-        para.setAttribute('class', 'disaster_text')
-        para.innerHTML = '<b>' + events[i].title + '</b>' +" on "  + `${dateStart.getFullYear()}-${dateStart.getMonth() + 1}-${dateStart.getDate() + 1} `+ dateStart.toUTCString().slice(-12) + ' to ' + `${dateEnd.getFullYear()}-${dateEnd.getMonth() + 1}-${dateEnd.getDate() + 1} ` + dateEnd.toUTCString().slice(-12);
-        document.getElementById(id).append(para);
-
     }
-  }
-function getWeather(days){
-    let objToday = new Date()
-    currentDate.setDate(objToday.getDate() + days)
-}
+    )
 
-function getCalender(){
-    let objDay = getWeather(0);
-    let weekDay = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-    let months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-    let weekDayList = [
-
-    ]
-    let dayList = [
-
-    ]
-    //Code for the first day to get the month and year along with the day and day of the week to append
-    objDay = getWeather(i);
-    let curDay = objToday.getDay();
-    let dayOfWeek = weekday[objToday.getDay()]
-    weekDayList.push(dayOfWeek);
-    dayList.push(curDay);
-    let curMonth = months[objToday.getMonth()];
-    let curYear = objToday.getFullYear();
-    //Loops through the other 6 days 
-    for(let i = 1; i < 7; i++){
-        objDay = getWeather(i);
-        let curDay = objToday.getDay();
-        let dayOfWeek = weekday[objToday.getDay()]
-        
-        weekDayList.push(dayOfWeek);
-        dayList.push(curDay);
-    }
-    //Turns the year and month into html elements
-    let visualMonth = document.createElement("li");
-    visualMonth.setAttribute('class', 'month');
-    visualMonth.innerHTML(curMonth);
-    
-    let visualYear = document.createElement("li");
-    visualMonth.setAttribute('class', 'year');
-    visualMonth.innerHTML(curYear);
-
-    for(let j = 0; i < weekDayList.length; i++){
-        let visualWeekDay = document.createElement("li");
-        visualMonth.setAttribute('class', 'weekDay');
-        visualMonth.innerHTML(weekDay);
-        document.getElementById(id).appendChild(visualWeekDay)
-    }
-    for(let k = 0; i < dayList.length; i++){
-        let visualDay= document.createElement("li");
-        visualMonth.setAttribute('class', 'day');
-        visualMonth.innerHTML(curDay);
-        document.getElementById(id).appendChild(visualDay);  
-    }
 }
 
 
+//returns an object which holds the results
 
+
+const form1 = document.querySelectorAll('.form')[0];
+const form2 = document.querySelectorAll('.form')[1];
+redirectEvent(form1, 'disaster');
+redirectEvent(form2, 'weather');
 
 
 
