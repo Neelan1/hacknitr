@@ -7,7 +7,7 @@ async function fetchLongLat(country, city) // async means it happens with
     console.log(country)
     console.log(city)
 
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0`);
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&limit=1&appid=4466ecaa9785525d41f5b0a40540b3c0`);
     if (response.ok)  { // checks if response works
         
         return await response.json(); // returns it
