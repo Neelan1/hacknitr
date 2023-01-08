@@ -203,10 +203,22 @@ header {
   cursor: pointer;
 }
 
+.info-format {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .surviveImage{
+  margin: 1rem;
   width: 40%;
   height: 40%;
 }
+
+.survivalTips {
+  color: white;
+} 
 
 #results{
   display: flex;
@@ -214,12 +226,7 @@ header {
   flex-direction: row;
   align-items: baseline;
 }
-.results{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: baseline;
-}
+
 
 #results :hover {
   opacity: 70%;
@@ -240,10 +247,6 @@ header {
 
 }
 
-#survivalBackground {
-  background-color: rgb(100, 172, 162);
-}
-
 .surviveImage {
   height: 40%;
   width: 40%;
@@ -257,6 +260,7 @@ header {
   font-size: 0.8rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  color: white;
 }
 
 .aboutus {
@@ -389,6 +393,13 @@ body {font-family: Verdana, sans-serif;}
 
 .info-none-images2 {
   margin: 2rem;
+}
+
+#nothing {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
 }
 
 #bigbox li {
