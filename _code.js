@@ -1,5 +1,4 @@
 
-
 async function fetchLongLat(country, city) // async means it happens with 
 {
     // gets the data from the website api using https://api.predicthq.com/v1/events/?category=disasters,terror,severe-weather, s
