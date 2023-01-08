@@ -5,7 +5,7 @@ async function fetchWeather(place) // async means it happens with
 
 
 
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76fd3f0ca85045e899633353230601&q=${place[0]},${place[1]}&days=6&aqi=no&alerts=no`);
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=76fd3f0ca85045e899633353230601&q=${place[0]},${place[1]}&days=6&aqi=no&alerts=no`);
     if (response.ok)  { // checks if response works
         
         return await response.json(); // returns it
