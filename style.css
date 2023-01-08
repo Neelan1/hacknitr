@@ -227,6 +227,12 @@ header {
   align-items: baseline;
 }
 
+.results{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+}
 
 #results :hover {
   opacity: 70%;
