@@ -37,10 +37,13 @@ function redirectEvent(form, type)
 
         if(!(country == null || country == ""))
         {
+            localStorage.setItem('location', JSON.stringify([city, country]));
             fetchLongLat(country, city).then( // runs the api fetch and gets the info
 
                 // after its done loading it does all the stuff in the brackets
                 response => {  
+                    
+
                     
 
                     const longlat = [response[0].lat, response[0].lon];

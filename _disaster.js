@@ -140,7 +140,7 @@ function printResults(events){
         else if(events[i].title.toLowerCase().includes("heatwave"))
             putHeatWave(id);
         else if(events[i].title.toLowerCase().includes("tornado") || events[i].title.toLowerCase().includes("wind"))
-            putTornado(i);
+            putTornado(id);
         else if(events[i].title.toLowerCase().includes("rain"))
             putRain(id);
         else if(events[i].title.toLowerCase().includes("dust") || events[i].title.toLowerCase().includes("sandstorm"))
@@ -173,6 +173,8 @@ fetchQuote(JSON.parse(localStorage.getItem('longlat'))).then(
             document.getElementById('nothing').appendChild(text);
         }
         else {
+            const place = JSON.parse(localStorage.getItem('location'))
+            document.getElementById('disastertitle').innerHTML = `Search Results for ${place[0]}, ${place[1]}`
             console.log('test3')
             events = response.results;
             console.log(events);

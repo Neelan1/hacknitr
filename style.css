@@ -475,6 +475,12 @@ body {font-family: Verdana, sans-serif;}
   display: block;
   color: red;
 }
+.results{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+}
 
 .hovertext1:hover .hide{
   display: block;

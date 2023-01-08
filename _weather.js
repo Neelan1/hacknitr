@@ -21,8 +21,13 @@ function getWeather(days){
     objToday.setDate(objToday.getDate() + days)
     return objToday;
 }
-let month = 0;
-let year = 0;
+let startMonth = 0;
+let startYear = 0;
+let endMonth = 0;
+let endYear = 0;
+let startDay = 0;
+let endDay = 0;
+
 function getCalender(){
     let id = 0;
     let objToday = getWeather(0);
@@ -47,11 +52,20 @@ function getCalender(){
     for(let i = 0; i < 7; i++){
         if(i == 0)
         {
-            month = months[objToday.getMonth()];
-            year = objToday.getFullYear();
+            startMonth = months[objToday.getMonth()];
+            startYear = objToday.getFullYear();
+            startDay = objToday.getDate();
+            
         }
+        
 
         objToday = getWeather(i);
+        if(i == 6){
+            endMonth = months[objToday.getMonth()];
+            endYear = objToday.getFullYear();
+            endDay = objToday.getDate();
+
+        }
         let curDay = objToday.getDate();
         let dayOfWeek = weekDay[objToday.getDay()]
 
@@ -59,13 +73,11 @@ function getCalender(){
         dayList.push(curDay);
     }
     //Turns the year and month into html elements
-    // let visualMonth = document.createElement("li");
-    // visualMonth.setAttribute('class', 'month');
-    // visualMonth.innerHTML = curMonth;
+    let title = document.getElementById("forecasttitle");
+    
+    title.innerHTML = `Weather Forecast for ${startMonth} ${startDay}, ${startYear} - ${endMonth} ${endDay}, ${endYear}` ;
 
-    // let visualYear = document.createElement("li");
-    // visualYear.setAttribute('class', 'year');
-    // visualYear.innerHTML = (curYear);
+
 
     for(let j = 0; j < weekDayList.length; j++){
         id = (j % 7) + 1
@@ -81,7 +93,7 @@ function getCalender(){
         
     }
 }
-let counter1 = 0, counter2 = 0, counter3 = 0, counter4 = 0, counter5 = 0, counter6 = 0, counter7 = 0, counter8 = 0;
+let counter1 = 0, counter2 = 0, counter3 = 0, counter4 = 0, counter5 = 0, counter6 = 0, counter7 = 0;
 function displayText(id)
 {
    
@@ -95,7 +107,7 @@ function displayText(id)
         const weatherArray2 = [weatherList[1].avgtemp_c, weatherList[1].maxwind_kph, weatherList[1].condition.text]
         for(let i = 0; i <weatherArray2.length; i++ ){
             let text = document.createElement("li");
-            console.log(text)
+            
             text.innerHTML = weatherArray1[i] + weatherArray2[i];
             document.getElementById(id).appendChild(text);
 
@@ -174,6 +186,7 @@ function displayText(id)
     {
 
         counter7++;
+        console.log('test')
         const weatherArray2 = [weatherList[6].avgtemp_c, weatherList[6].maxwind_kph, weatherList[6].condition.text]
         for(let i = 0; i <weatherArray2.length; i++ ){
             let text = document.createElement("li");
@@ -183,19 +196,7 @@ function displayText(id)
         }
 
     }
-    if(id.includes('8') && counter8 == 0)
-    {
 
-        counter8++;
-        const weatherArray2 = [weatherList[7].avgtemp_c, weatherList[7].maxwind_kph, weatherList[7].condition.text]
-        for(let i = 0; i <weatherArray2.length; i++ ){
-            let text = document.createElement("li");
-            text.innerHTML = weatherArray1[i] + weatherArray2[i];
-            document.getElementById(id).appendChild(text);
-
-        }
-
-    }
 
 }
 
@@ -218,7 +219,7 @@ fetchWeather(JSON.parse(localStorage.getItem('longlat'))).then( // runs the api 
             Array.prototype.push.apply(events, events2)
            
             getCalender();
-            
+            console.log(events)
             weatherList = events;
 
 
