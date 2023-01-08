@@ -33,7 +33,7 @@ body {
 }
 
 .navigationbar li:hover {
-  background-color: #555;
+  background-color: rgb(63, 58, 58);
 }
 
 .navigationbar li a {
@@ -44,7 +44,7 @@ body {
 }
 
 .navigationbar:active {
-  opacity: 50%;
+  opacity: 80%;
 }
 
 button{
@@ -70,7 +70,7 @@ button:hover{
 
 /* Code for location question */
 :root {
-  --primary-color: #009e6c;
+  --primary-color: #038058;
   --border-color: #eee;
 }
 
